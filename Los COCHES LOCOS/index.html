@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Carrera Loca | Sugar Boost</title>
+    <style>
+        :root {
+            --primary: #ffeb3b;
+            --secondary: #ff4081;
+            --dark: #121212;
+            --accent: #00e5ff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--dark);
+            color: white;
+            margin: 0;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* Navegación */
+        nav {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 90%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            text-transform: uppercase;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            align-items: center;
+        }
+
+        nav ul li { margin-left: 20px; }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover { color: var(--primary); }
+
+        .lang-btn {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        /* Portada Vertical */
+        .hero {
+            height: 100vh;
+            /* MODIFICAR AQUÍ: Tu imagen de portada (portada.jpg) */
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('Imagenes/Portada.png') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+            text-shadow: 4px 4px var(--secondary);
+            text-transform: uppercase;
+        }
+
+        /* Secciones */
+        section { padding: 80px 10%; }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        /* Tarjetas */
+        .card {
+            background: #1e1e1e;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid #333;
+            transition: 0.3s;
+        }
+
+        .card:hover { border-color: var(--accent); transform: translateY(-10px); }
+
+        .card img {
+            width: 100%;
+            aspect-ratio: 9/16; /* Formato vertical */
+            object-fit: cover;
+        }
+
+        .card-content { padding: 20px; text-align: center; }
+        .card-content h3 { color: var(--accent); margin: 0 0 10px 0; }
+
+        /* Botón Audio */
+        .audio-btn {
+            background: var(--accent);
+            color: black;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        /* Videos */
+        .video-container {
+            position: relative;
+            padding-bottom: 177.78%; /* 9:16 vertical */
+            height: 0;
+            border-radius: 15px;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+
+        /* Equipo de Producción */
+        .staff-section {
+            background: #000;
+            text-align: center;
+            padding: 60px 10%;
+            border-top: 2px solid var(--secondary);
+        }
+
+        .staff-grid {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .staff-item h4 { color: var(--secondary); margin-bottom: 5px; text-transform: uppercase; }
+
+        footer { background: #000; text-align: center; padding: 30px; color: #555; }
+
+        @media (max-width: 768px) { .hero h1 { font-size: 2.5rem; } nav ul { display: none; } }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">La Carrera Loca 🏎️</div>
+        <ul>
+            <li><a href="#inicio" data-es="Inicio" data-en="Home">Inicio</a></li>
+            <li><a href="#personajes" data-es="Personajes" data-en="Characters">Personajes</a></li>
+            <li><a href="#historia" data-es="Historia" data-en="Story">Historia</a></li>
+            <li><button class="lang-btn" onclick="toggleLanguage()">ES/EN</button></li>
+        </ul>
+    </nav>
+
+    <section id="inicio" class="hero">
+        <h1>SUGAR BOOST!</h1>
+        <p data-es="¡La carrera más dulce y peligrosa!" data-en="The sweetest and most dangerous race!">¡La carrera más dulce y peligrosa!</p>
+    </section>
+
+    <section id="personajes">
+        <h2 style="text-align:center;" data-es="Personajes Principales" data-en="Main Characters">Personajes Principales</h2>
+        <div class="grid">
+            <div class="card">
+                <img src="Imagenes/Youssef.png">
+                <div class="card-content"><h3>Youssef</h3><p data-es="El Campeón" data-en="The Champion">El Campeón</p></div>
+            </div>
+            <div class="card">
+                <img src="Imagenes/Adif.png">
+                <div class="card-content"><h3>Adif</h3><p data-es="La Rival" data-en="The Rival">La Rival</p></div>
+            </div>
+            <div class="card">
+                <img src="Imagenes/Joni.png">
+                <div class="card-content"><h3>Joni</h3><p data-es="El Mecánico" data-en="The Mechanic">El Mecánico</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="historia" style="background: #181818;">
+        <h2 style="text-align:center;" data-es="La Historia" data-en="The Story">La Historia</h2>
+        <div class="grid">
+            <div class="card">
+                <img src="Imagenes/Pag1.png">
+                <div class="card-content"><h3 data-es="Capítulo 1" data-en="Chapter 1">Capítulo 1</h3></div>
+                <button class="audio-btn" onclick="playAudio('Audios/Voz1.mp3')">▶ Audio</button>
+            </div>
+            <div class="card">
+                <img src="Imagenes/Pag2.png">
+                <div class="card-content"><h3 data-es="Capítulo 2" data-en="Chapter 2">Capítulo 2</h3></div>
+                <button class="audio-btn" onclick="playAudio('Audios/Voz2.mp3')">▶ Audio</button>
+            </div>
+            <div class="card">
+                <img src="Imagenes/Pag3.png">
+                <div class="card-content"><h3 data-es="Capítulo 3" data-en="Chapter 3">Capítulo 3</h3></div>
+                <button class="audio-btn" onclick="playAudio('Audios/Voz3.mp3')">▶ Audio</button>
+            </div>
+            <div class="card">
+                <img src="Imagenes/Pag4.png">
+                <div class="card-content"><h3 data-es="Capítulo 4" data-en="Chapter 4">Capítulo 4</h3></div>
+                <button class="audio-btn" onclick="playAudio('Audios/Voz4.mp3')">▶ Audio</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="videos">
+        <h2 style="text-align:center;">Vídeos</h2>
+        <div class="grid">
+            <div class="video-container"><iframe src="Videos/Video1.mp4"></iframe></div>
+            <div class="video-container"><iframe src="Videos/Video2.mp4"></iframe></div>
+            <div class="video-container"><iframe src="Videos/Video3.mp4"></iframe></div>
+            <div class="video-container"><iframe src="Videos/Video4.mp4"></iframe></div>
+        </div>
+    </section>
+
+    <section class="staff-section">
+        <h2 data-es="Equipo de Producción" data-en="Production Team">Equipo de Producción</h2>
+        <div class="staff-grid">
+            <div class="staff-item"><h4 data-es="Dirección" data-en="Director">Dirección</h4><p>Hamza Y.M</p></div>
+            <div class="staff-item"><h4 data-es="Guión" data-en="Writer">Guión</h4><p>IA Gemini</p></div>
+            <div class="staff-item"><h4 data-es="Arte" data-en="Art">Arte</h4><p>Skywork.ia</p></div>
+        </div>
+    </section>
+
+    <footer>
+        <p>SUGAR BOOST &copy; 2026</p>
+    </footer>
+
+    <script>
+        let currentLang = 'es';
+        function toggleLanguage() {
+            currentLang = currentLang === 'es' ? 'en' : 'es';
+            document.querySelectorAll('[data-es]').forEach(el => {
+                el.textContent = el.getAttribute(`data-${currentLang}`);
+            });
+        }
+        function playAudio(url) {
+            new Audio(url).play();
+        }
+    </script>
+</body>
+</html>
